@@ -1,0 +1,17 @@
+{
+  "staging": {
+    "host": "sql6.freemysqlhosting.net",
+    "username": "sql6506249",
+    "password": "fcm1MqlMgF",
+    "database": "sql6506249",
+    "dialect": "mysql",
+    "logging": true,
+    "seederStorage": "sequelize",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  }
+}
