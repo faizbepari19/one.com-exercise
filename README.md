@@ -43,9 +43,11 @@ Start the server again and its ready to use. All the subsequent server restarts 
 ```
 npm start
 ```
-## Requirments
+## Requirements
 
 Make sure node is installed.
 
  ### Note: 
 I have added the DB configuration in the config.json file and committed it. I did it for the sake of simplicity for the evaluator to build the project and run it. [In ideal cases, we should not commit db configuration to the repo].
+
+The API for sign-up has a ```role``` parameter input. It will be an integer corresponding to the ```user_roles``` master table
