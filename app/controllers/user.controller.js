@@ -1,5 +1,5 @@
 const db = require("../models");
-const { validation } = require("../lib/validator");
+const { validation, isAlphanumeric } = require("../lib/validator");
 const { generateToken } = require("../lib/jwt");
 
 const User = db.users;
@@ -16,28 +16,37 @@ module.exports = {
 
       validation(req.body, ['username', 'password', 'role']);
 
+      if (!isAlphanumeric(req.body.password)) {
+        throw {
+          message: 'Password should be alphanumeric',
+          code: 400
+        }
+      }
+
       let validRole = await UserRole.getRoleById(req.body.role)
       if (!validRole) {
         throw {
-          message: 'Invalid role'
+          message: 'Invalid role',
+          code: 400
         }
       }
 
       let exist = await User.getUser(req.body.username);
       if (exist.length) {
         throw {
-          message: 'Username already taken'
+          message: 'Username already taken',
+          code: 409
         }
       }
 
       await User.registerUser(req.body);
 
-      res.send({
+      res.status(201).send({
         message: "User registered successfully."
       });
 
     } catch (err) {
-      res.status(500).send({
+      res.status(err.code || 500).send({
         message:
           err.message || "Something went wrong"
       });
@@ -57,7 +66,8 @@ module.exports = {
 
       if (!userData.length) {
         throw {
-          message: 'Invalid creds'
+          message: 'Invalid username/password',
+          code: 401
         }
       }
 
@@ -65,7 +75,8 @@ module.exports = {
 
       if (!valid) {
         throw {
-          message: 'Invalid creds'
+          message: 'Invalid username/password',
+          code: 401
         }
       }
 
@@ -79,7 +90,7 @@ module.exports = {
       });
 
     } catch (err) {
-      res.status(500).send({
+      res.status(err.code || 500).send({
         message:
           err.message || "Something went wrong"
       });

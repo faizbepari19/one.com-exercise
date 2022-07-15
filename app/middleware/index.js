@@ -49,7 +49,7 @@ module.exports = {
             next();
         } catch (err) {
             res.status(401).send({
-                message: 'Not authorized to access endpoint' + err.message
+                message: 'Not authorized to access endpoint'
             })
         }
     }

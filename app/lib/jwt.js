@@ -10,7 +10,7 @@ module.exports = {
      */
     generateToken: (user_id) => {
         const token = jwt.sign({ user_id: user_id }, process.env.SECRET, {
-            expiresIn: process.env.TOKEN_EXPIRY // 24 hours
+            expiresIn: parseInt(process.env.TOKEN_EXPIRY) // 24 hours
         });
 
         return token;
