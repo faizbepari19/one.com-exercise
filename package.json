@@ -1,20 +1,17 @@
 {
-  "name": "nodejs-express-sequelize-mysql",
+  "name": "acl-logic-for-apis",
   "version": "1.0.0",
-  "description": "Node.js Rest Apis with Express, Sequelize & MySQL",
+  "description": "A middleware to check authorization of a user",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nodejs",
-    "express",
-    "rest",
-    "api",
-    "sequelize",
-    "mysql"
+    "acl",
+    "middleware",
+    "e-commerce"
   ],
-  "author": "bezkoder",
+  "author": "Faiz Bepari",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

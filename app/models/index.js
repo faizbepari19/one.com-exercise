@@ -1,6 +1,9 @@
-const env = 'staging';
+const env = process.env.NODE_ENV || 'staging';
 const dbConfig = require("../config/config.json")[env];
-console.log(dbConfig)
+
+if (!dbConfig) {
+  throw "Invalid NODE_ENV set"
+}
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {

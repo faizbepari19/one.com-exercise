@@ -6,6 +6,11 @@ const User = db.users;
 const UserRole = db.user_roles
 
 module.exports = {
+  /**
+   * Use to register a user 
+   * @param {*} req 
+   * @param {*} res 
+   */
   signUp: async (req, res) => {
     try {
 
@@ -39,6 +44,11 @@ module.exports = {
     }
   },
 
+  /**
+   * Use to login a user 
+   * @param {*} req 
+   * @param {*} res 
+   */
   login: async (req, res) => {
     try {
       validation(req.body, ['username', 'password']);

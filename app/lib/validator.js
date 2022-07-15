@@ -1,4 +1,11 @@
 module.exports = {
+
+    /**
+     * 
+     * @param {*} data - Object to be validated
+     * @param {*} keys - array of keys to be validated
+     * @returns true or throw error
+     */
     validation: (data, keys) => {
         if (keys.length != 0) {
             for (index in keys) {

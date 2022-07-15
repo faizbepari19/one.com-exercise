@@ -37,7 +37,6 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   User.validPassword = (password, hash) => {
-    console.log(password, hash)
     return bcrypt.compareSync(password, hash);
   }
 

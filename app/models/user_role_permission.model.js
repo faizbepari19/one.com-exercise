@@ -26,6 +26,13 @@ module.exports = (sequelize, Sequelize) => {
         }
     });
 
+
+    /**
+     * 
+     * @param {*} user_id - id of the logged in user
+     * @param {*} method - string
+     * @returns allowed permissions
+     */
     UserRolePermission.checkAccess = async (user_id, method) => {
         const query = `
         SELECT p.name AS permission_name

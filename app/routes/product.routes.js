@@ -7,7 +7,6 @@ module.exports = app => {
     router.post("/", authClient, ACL, products.addProduct);
   
     router.put("/", authClient, ACL, products.updateProduct);
-
     
     router.patch("/", authClient, ACL, products.updateProduct);
 

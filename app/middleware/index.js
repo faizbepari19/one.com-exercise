@@ -13,6 +13,9 @@ const METHODS = {
 };
 
 module.exports = {
+    /**
+     * A middleware method to verify the token in the request
+     */
     authClient: async (req, res, next) => {
         try {
             let decoded = await verifyToken(req.headers.token);
@@ -33,6 +36,9 @@ module.exports = {
         }
     },
 
+    /**
+     * A middleware method check the authorisation of the user
+     */
     ACL: async (req, res, next) => {
         try {
             const access = await UserRolePermission.checkAccess(req.user_id, METHODS[req.method]);
