@@ -9,6 +9,13 @@ module.exports = (sequelize, Sequelize) => {
     name: {
       type: Sequelize.STRING(32)
     }
+  }, {
+    indexes: [
+      {
+        unique: true,
+        fields: ['name']
+      }
+    ],
   });
 
   return Permission;

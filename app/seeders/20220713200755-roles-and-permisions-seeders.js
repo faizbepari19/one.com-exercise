@@ -58,14 +58,14 @@ module.exports = {
 
       for (let role of all_roles) {
         if (role.name == 'Admin') {
-          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id) SELECT ${role.id}, id FROM permissions`, {
+          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id, createdAt, updatedAt) SELECT ${role.id}, id, now(), now() FROM permissions`, {
             type: queryInterface.sequelize.QueryTypes.INSERT,
             raw: true,
             transaction: t
           });
 
         } else if (role.name == 'Seller') {
-          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id) SELECT ${role.id}, id FROM permissions WHERE name != 'delete'`, {
+          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id, createdAt, updatedAt) SELECT ${role.id}, id, now(), now() FROM permissions WHERE name != 'delete'`, {
             type: queryInterface.sequelize.QueryTypes.INSERT,
             raw: true,
             transaction: t
@@ -73,13 +73,13 @@ module.exports = {
 
         } else if (role.name == 'Supporter') {
 
-          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id) SELECT ${role.id}, id FROM permissions WHERE name IN ('delete', 'fetch')`, {
+          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id, createdAt, updatedAt) SELECT ${role.id}, id, now(), now() FROM permissions WHERE name IN ('delete', 'fetch')`, {
             type: queryInterface.sequelize.QueryTypes.INSERT,
             raw: true,
             transaction: t
           });
         } else if (role.name == 'Customer') {
-          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id) SELECT ${role.id}, id FROM permissions WHERE name = 'fetch'`, {
+          await queryInterface.sequelize.query(`INSERT INTO user_role_permissions (user_role_id, permission_id, createdAt, updatedAt) SELECT ${role.id}, id , now(), now()FROM permissions WHERE name = 'fetch'`, {
             type: queryInterface.sequelize.QueryTypes.INSERT,
             raw: true,
             transaction: t

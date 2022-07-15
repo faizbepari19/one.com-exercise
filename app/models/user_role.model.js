@@ -13,6 +13,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
       defaultValue: 1
     }
+  }, {
+    indexes: [
+      {
+        unique: true,
+        fields: ['name']
+      }
+    ],
   });
 
   UserRole.getRoleById = (id) => {

@@ -26,6 +26,12 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }, {
+    indexes: [
+      {
+        unique: true,
+        fields: ['username']
+      }
+    ],
     hooks: {
       beforeCreate: async (user) => {
         if (user.password) {
